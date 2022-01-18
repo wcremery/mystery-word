@@ -1,23 +1,32 @@
 #include <iostream>
+#include <string>
 
-void swap(int& a, int& b);
 
 int main()
 {
-	int i = 2, j = 5;
-	std::cout << i << std::endl;
-	std::cout << j << std::endl;
-	swap(i, j);
-	std::cout << "swap" << std::endl;
-	std::cout << i << std::endl;
-	std::cout << j << std::endl;
+	double leftOperand(0), rightOperand(0), result(0);
+	char mathOperator(NULL);
+
+	std::cin >> leftOperand >> mathOperator >> rightOperand;
+
+	switch (mathOperator)
+	{
+	case '+':
+		result = leftOperand + rightOperand;
+		break;
+	case '-':
+		result = leftOperand - rightOperand;
+		break;
+	case '/':
+		result = leftOperand / rightOperand;
+		break;
+	case '*':
+		result = leftOperand * rightOperand;
+		break;
+	default:
+		return EXIT_FAILURE;
+	}
+	std::cout << leftOperand << mathOperator << rightOperand <<  " = " << result << std::endl;
 
 	return EXIT_SUCCESS;
-}
-
-void swap(int& a, int& b)
-{
-	int temp = a;
-	a = b;
-	b = temp;
 }
