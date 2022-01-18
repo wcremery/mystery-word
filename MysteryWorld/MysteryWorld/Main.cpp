@@ -1,23 +1,45 @@
 #include <iostream>
+#include <string>
 
-void swap(int& a, int& b);
+void doMath();
 
 int main()
 {
-	int i = 2, j = 5;
-	std::cout << i << std::endl;
-	std::cout << j << std::endl;
-	swap(i, j);
-	std::cout << "swap" << std::endl;
-	std::cout << i << std::endl;
-	std::cout << j << std::endl;
+	try
+	{
+		doMath();
+	}
+	catch(char* message)
+	{
+		std::cout << message << std::endl;
+	}
 
 	return EXIT_SUCCESS;
 }
 
-void swap(int& a, int& b)
+void doMath()
 {
-	int temp = a;
-	a = b;
-	b = temp;
+	double leftOperand(0), rightOperand(0), result(0);
+	char mathOperator(NULL);
+
+	std::cin >> leftOperand >> mathOperator >> rightOperand;
+
+	switch (mathOperator)
+	{
+	case '+':
+		result = leftOperand + rightOperand;
+		break;
+	case '-':
+		result = leftOperand - rightOperand;
+		break;
+	case '/':
+		result = leftOperand / rightOperand;
+		break;
+	case '*':
+		result = leftOperand * rightOperand;
+		break;
+	default:
+		throw "Operator not implemented";
+	}
+	std::cout << leftOperand << mathOperator << rightOperand << " = " << result << std::endl;
 }
